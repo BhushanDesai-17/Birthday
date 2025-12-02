@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Isha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="hero">
+        <h1>🎉 Happiest Birthday to You! 🎂</h1>
+        <div class="name">ISHA ❤️</div>
+        <div class="tagline">Celebrating an amazing person on their Special Day!</div>
+    </section>
+    
+    <section class="message-section">
+        <h2 class="section-title">A Special Message for You</h2>
+        <div class="message-card">
+            <p>Hello Future CA!</p>
+            <p style="margin-top: 20px;">
+                Today is all about YOU!! Another year older, wiser, and more amazing than ever. Your presence in this world makes it a brighter place for everyone who knows you.
+            </p>
+            <p style="margin-top: 20px;">
+                Wishing you a wonderful year ahead filled with success, strength, and clarity. Your journey towards becoming a CA is not just about passing exams, it's about building resilience, discipline, and confidence that will last a lifetime.
+            </p>
+            <p style="margin-top: 20px;">
+                May this birthday remind you how far you've come and motivate you for the incredible milestone yet to come. Keep believing in yourself, because the same dedication that got you this far will one day make you put "CA" before your name with pride. 💫
+            </p>
+            <p style="margin-top: 20px;">
+                Here's to balance sheets of happiness, profits of positivity, and zero losses of hope! ✨
+            </p>
+        </div>
+    </section>
+    
+    <section class="gallery-section">
+        <h2 class="section-title">Your Photos 📸</h2>
+        <div class="slideshow-container">
+            <div class="slide active">
+                <img src="Photo 1.jpeg" alt="Photo 1">
+            </div>
+            <div class="slide">
+                <img src="Photo 2.jpeg" alt="Photo 2">
+            </div>
+            <div class="slide">
+                <img src="Photo 3.jpeg" alt="Photo 3">
+            </div>
+            <div class="slide">
+                <img src="Photo 4.jpeg" alt="Photo 4">
+            </div>
+            <div class="slide">
+                <img src="Photo 5.jpeg" alt="Photo 5">
+            </div>
+        </div>
+        <div class="gallery-controls">
+            <button class="gallery-btn" onclick="changeSlide(-1)">⬅️ Previous</button>
+            <button class="gallery-btn" onclick="changeSlide(1)">Next ➡️</button>
+        </div>
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </section>
+    
+    <section class="wishes-section">
+        <h2 class="section-title">Birthday Wishes for You</h2>
+        <div class="wishes-grid">
+            <div class="wish-card">
+                <div class="icon">🎯</div>
+                <h4>Success</h4>
+                <p>May all your goals and dreams come true this year</p>
+            </div>
+            <div class="wish-card">
+                <div class="icon">🌟</div>
+                <h4>Adventure</h4>
+                <p>May this year bring exciting new adventures and experiences</p>
+            </div>
+            <div class="wish-card">
+                <div class="icon">🎨</div>
+                <h4>Creativity</h4>
+                <p>May your creativity flourish and inspire amazing things</p>
+            </div>
+            <div class="wish-card">
+                <div class="icon">😊</div>
+                <h4>Joy</h4>
+                <p>May every day be filled with laughter and beautiful moments</p>
+            </div>
+            <div class="wish-card">
+                <div class="icon">🌈</div>
+                <h4>Growth</h4>
+                <p>May you continue to grow into the best version of yourself</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p style="font-size: 1.5em; margin-bottom: 15px;">🎂 Happy Birthday Again! 🎂</p>
+        <p>Made with ❤️ and lots of happiness</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Cheers to another amazing year!</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            // Remove active class from all dots
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Handle wraparound
+            if (index >= slides.length) currentIndex = 0;
+            if (index < 0) currentIndex = slides.length - 1;
+
+            // Add active class to current slide and dot
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            showSlide(currentIndex);
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            showSlide(index);
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(() => {
+            currentIndex++;
+            showSlide(currentIndex);
+        }, 5000);
+
+        function createConfetti() {
+            const colors = ['#ff6b6b','#4ecdc4','#45b7d1','#f9ca24','#6c5ce7','#ff69b4'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 30);
+            }
+        }
+
+        window.addEventListener('load', createConfetti);
+        setInterval(createConfetti, 6000);
+    </script>
+</body>
+</html>
+
